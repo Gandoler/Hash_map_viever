@@ -31,4 +31,11 @@ public class Panel extends JPanel {
     public  void Update_scroll_panels(){
         this.hashMapPanels.Update_scroll_panels();
     }
+
+    public void Get_load_button_function(){
+        this.loadSafeAndSearch.Load_button_function();
+    }
+    public void Get_save_button_function(){
+        this.loadSafeAndSearch.Save_button_function();
+    }
 }

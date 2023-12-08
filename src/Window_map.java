@@ -1,7 +1,9 @@
 import javax.swing.*;
+import javax.swing.text.DefaultEditorKit;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 public class Window_map extends JFrame {
     private Panel panel;
@@ -13,7 +15,11 @@ public class Window_map extends JFrame {
 
 
 
+
     public Window_map(){
+
+
+
 
 
 
@@ -45,6 +51,24 @@ public class Window_map extends JFrame {
         setVisible(true);
         setResizable(false);
        setTitle("HachMap viever");
+
+
+        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
+            @Override
+            public boolean dispatchKeyEvent(KeyEvent e) {
+                if (e.getID() == KeyEvent.KEY_PRESSED) {
+                    if ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0 && e.getKeyCode() == KeyEvent.VK_O) {
+                        panel.Get_load_button_function();
+
+
+                    } else if ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0 && e.getKeyCode() == KeyEvent.VK_S) {
+                        panel.Get_save_button_function();
+                    }
+                }
+                return false;
+            }
+        });
+
     }
 
     public void Set_map_data(Map_data data){this.data = data;}
@@ -68,4 +92,6 @@ public class Window_map extends JFrame {
     public Hash_map_panels Get_Hash_map_panels(){
         return this.panel.Get_Hash_map_panels();
     }
+
+
 }
